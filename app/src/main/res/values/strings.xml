@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Dialogs</string>
+    <string name="txtCustomDialog">You successfully created your custom dialog!</string>
+    <string name="txtSampleDialog">Simple Dialog</string>
+    <string name="txtMultiDialog">Multi Element Dialog</string>
+    <string name="txtYesNoDialog">Yes and No Dialog</string>
+    <string name="txtAlertDialog">Alert Dialog</string>
+    <string name="txtBtnCustom">Custom Dialog</string>
+
+
+</resources>
