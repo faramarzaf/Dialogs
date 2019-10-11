@@ -3,8 +3,10 @@ package com.faramarz.tictacdev.dialogs;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,49 +15,65 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btn_simple, btn_yes_no, btn_alert, btn_custom, btn_multi;
+    Button btnSimple, btnMulti, btnYesNo, btnProgress, btnAlert, btnCustom;
+    ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bind();
-        btn_simple.setOnClickListener(this);
-        btn_multi.setOnClickListener(this);
-        btn_yes_no.setOnClickListener(this);
-        btn_alert.setOnClickListener(this);
-        btn_custom.setOnClickListener(this);
+        btnSimple.setOnClickListener(this);
+        btnMulti.setOnClickListener(this);
+        btnYesNo.setOnClickListener(this);
+        btnProgress.setOnClickListener(this);
+        btnAlert.setOnClickListener(this);
+        btnCustom.setOnClickListener(this);
     }
 
     private void bind() {
-        btn_simple = findViewById(R.id.btn_simple);
-        btn_yes_no = findViewById(R.id.btn_yes_no);
-        btn_alert = findViewById(R.id.btn_alert);
-        btn_custom = findViewById(R.id.btn_custom);
-        btn_multi = findViewById(R.id.btn_multi);
+        btnSimple = findViewById(R.id.btnSimple);
+        btnMulti = findViewById(R.id.btnMulti);
+        btnYesNo = findViewById(R.id.btnYesNo);
+        btnProgress = findViewById(R.id.btnProgress);
+        btnAlert = findViewById(R.id.btnAlert);
+        btnCustom = findViewById(R.id.btnCustom);
+
     }
 
     @Override
     public void onClick(View v) {
         int selected = v.getId();
         switch (selected) {
-            case R.id.btn_simple:
+            case R.id.btnSimple:
                 simpleDialog();
                 break;
 
-            case R.id.btn_multi:
+            case R.id.btnMulti:
                 multiElementDialog();
                 break;
 
-            case R.id.btn_yes_no:
+            case R.id.btnYesNo:
                 yesNoDialog();
                 break;
 
-            case R.id.btn_alert:
+            case R.id.btnProgress:
+                progressDialog();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progress.dismiss();
+                    }
+                }, 2500);
+
+                break;
+
+            case R.id.btnAlert:
                 alertDialog();
                 break;
 
-            case R.id.btn_custom:
+
+            case R.id.btnCustom:
                 customDialog();
                 break;
 
@@ -141,6 +159,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setNegativeButton(android.R.string.no, null)
                 .setIcon(android.R.drawable.ic_delete)
                 .show();
+    }
+
+    private void progressDialog() {
+        progress = ProgressDialog.show(MainActivity.this, "Loading...", "Please wait to load data", true);
     }
 
     private void customDialog() {

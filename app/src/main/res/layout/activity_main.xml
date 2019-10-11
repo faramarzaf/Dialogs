@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn_simple"
+            android:id="@+id/btnSimple"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -25,7 +25,7 @@
             android:textColor="@color/color5" />
 
         <Button
-            android:id="@+id/btn_multi"
+            android:id="@+id/btnMulti"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -35,7 +35,7 @@
             android:textColor="@color/color5" />
 
         <Button
-            android:id="@+id/btn_yes_no"
+            android:id="@+id/btnYesNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -46,7 +46,17 @@
             android:textColor="@color/color5" />
 
         <Button
-            android:id="@+id/btn_alert"
+            android:id="@+id/btnProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_btn"
+            android:backgroundTint="@color/color7"
+            android:text="@string/txtProgress"
+            android:textColor="@color/color5" />
+
+        <Button
+            android:id="@+id/btnAlert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -59,7 +69,7 @@
 
 
         <Button
-            android:id="@+id/btn_custom"
+            android:id="@+id/btnCustom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

@@ -6,6 +6,7 @@
     <string name="txtYesNoDialog">Yes and No Dialog</string>
     <string name="txtAlertDialog">Alert Dialog</string>
     <string name="txtBtnCustom">Custom Dialog</string>
+    <string name="txtProgress">Progress Dialog</string>
 
 
 </resources>
