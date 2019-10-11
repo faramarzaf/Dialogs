@@ -3,10 +3,12 @@ package com.faramarz.tictacdev.dialogs;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnSimple, btnMulti, btnYesNo, btnProgress, btnAlert, btnCustom;
+    Button btnSimple, btnMulti, btnYesNo, btnProgress, btnAlert, btnCustom, btnProgressHorizontal;
     ProgressDialog progress;
 
     @Override
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnProgress.setOnClickListener(this);
         btnAlert.setOnClickListener(this);
         btnCustom.setOnClickListener(this);
+        btnProgressHorizontal.setOnClickListener(this);
     }
 
     private void bind() {
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnProgress = findViewById(R.id.btnProgress);
         btnAlert = findViewById(R.id.btnAlert);
         btnCustom = findViewById(R.id.btnCustom);
-
+        btnProgressHorizontal = findViewById(R.id.btnProgressHorizontal);
     }
 
     @Override
@@ -68,10 +71,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
 
+            case R.id.btnProgressHorizontal:
+                progressHorizontalDialog();
+
+                break;
+
             case R.id.btnAlert:
                 alertDialog();
                 break;
-
 
             case R.id.btnCustom:
                 customDialog();
@@ -79,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             default:
                 break;
-
         }
 
     }
@@ -164,6 +170,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void progressDialog() {
         progress = ProgressDialog.show(MainActivity.this, "Loading...", "Please wait to load data", true);
     }
+
+    private void progressHorizontalDialog() {
+        progress = new ProgressDialog(MainActivity.this);
+        progress.setTitle("Downloading Image ...");
+        progress.setMessage("Download in progress ...");
+        progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progress.setProgress(0);
+        progress.setMax(20);
+        progress.show();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    while (progress.getProgress() <= progress.getMax()) {
+                        Thread.sleep(500);
+                        handle.sendMessage(handle.obtainMessage());
+                        if (progress.getProgress() == progress.getMax()) {
+                            progress.dismiss();
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    @SuppressLint("HandlerLeak")
+    Handler handle = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            progress.incrementProgressBy(1);
+        }
+    };
 
     private void customDialog() {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup

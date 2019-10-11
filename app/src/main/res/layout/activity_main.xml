@@ -56,6 +56,18 @@
             android:textColor="@color/color5" />
 
         <Button
+            android:id="@+id/btnProgressHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_btn"
+            android:backgroundTint="@color/color8"
+            android:text="@string/txt_ProgressHorizontal"
+            android:textColor="@color/color5" />
+
+
+
+        <Button
             android:id="@+id/btnAlert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
