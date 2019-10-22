@@ -9,5 +9,7 @@
     <string name="txtProgress">Progress Dialog</string>
     <string name="txt_ProgressHorizontal">Progress Horizontal</string>
 
+    <string name="txtTheme1">Custom theme1</string>
+    <string name="txtTheme2">Custom theme2</string>
 
 </resources>

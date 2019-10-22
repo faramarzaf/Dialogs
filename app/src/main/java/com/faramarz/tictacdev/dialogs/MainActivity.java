@@ -2,6 +2,7 @@ package com.faramarz.tictacdev.dialogs;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ContextThemeWrapper;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -13,11 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnSimple, btnMulti, btnYesNo, btnProgress, btnAlert, btnCustom, btnProgressHorizontal;
+    Button btnSimple, btnMulti, btnYesNo, btnProgress, btnAlert, btnCustom, btnProgressHorizontal, btnTheme1, btnTheme2;
     ProgressDialog progress;
 
     @Override
@@ -25,6 +27,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bind();
+        clickEvents();
+    }
+
+    private void clickEvents() {
         btnSimple.setOnClickListener(this);
         btnMulti.setOnClickListener(this);
         btnYesNo.setOnClickListener(this);
@@ -32,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnAlert.setOnClickListener(this);
         btnCustom.setOnClickListener(this);
         btnProgressHorizontal.setOnClickListener(this);
+        btnTheme1.setOnClickListener(this);
+        btnTheme2.setOnClickListener(this);
     }
 
     private void bind() {
@@ -42,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnAlert = findViewById(R.id.btnAlert);
         btnCustom = findViewById(R.id.btnCustom);
         btnProgressHorizontal = findViewById(R.id.btnProgressHorizontal);
+        btnTheme1 = findViewById(R.id.btnTheme1);
+        btnTheme2 = findViewById(R.id.btnTheme2);
+
     }
 
     @Override
@@ -82,6 +93,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnCustom:
                 customDialog();
+                break;
+
+
+            case R.id.btnTheme1:
+                customTheme1Dialog();
+                break;
+
+            case R.id.btnTheme2:
+                customTheme2Dialog();
                 break;
 
             default:
@@ -222,6 +242,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //finally creating the alert dialog and displaying it
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+
+    private void customTheme1Dialog() {
+        new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom1)).setTitle("Title").setMessage("Message")
+
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainActivity.this, "Ok", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_email)
+                .show();
+    }
+
+    private void customTheme2Dialog() {
+        new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.ThemeOverlay_AppCompat_Dark)).setTitle("Title").setMessage("Message")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainActivity.this, "Ok", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .show();
+
     }
 
 
