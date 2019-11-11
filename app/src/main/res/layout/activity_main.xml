@@ -83,6 +83,15 @@
 
                 />
 
+            <Button
+                android:id="@+id/btnRadioButtonDialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_btn"
+                android:backgroundTint="@color/color1"
+                android:text="@string/txtTheme3"
+                android:textColor="@color/color5" />
 
             <Button
                 android:id="@+id/btnCustom"
@@ -115,6 +124,10 @@
                 android:backgroundTint="@color/color10"
                 android:text="@string/txtTheme2"
                 android:textColor="@color/color5" />
+
+
+
+
 
 
         </LinearLayout>

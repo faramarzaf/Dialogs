@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnSimple, btnMulti, btnYesNo, btnProgress, btnAlert, btnCustom, btnProgressHorizontal, btnTheme1, btnTheme2;
+    Button btnSimple, btnMulti, btnYesNo, btnProgress, btnAlert, btnCustom, btnProgressHorizontal, btnTheme1, btnTheme2, btnRadioButtonDialog;
     ProgressDialog progress;
 
     @Override
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnProgressHorizontal.setOnClickListener(this);
         btnTheme1.setOnClickListener(this);
         btnTheme2.setOnClickListener(this);
+        btnRadioButtonDialog.setOnClickListener(this);
     }
 
     private void bind() {
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnProgressHorizontal = findViewById(R.id.btnProgressHorizontal);
         btnTheme1 = findViewById(R.id.btnTheme1);
         btnTheme2 = findViewById(R.id.btnTheme2);
-
+        btnRadioButtonDialog = findViewById(R.id.btnRadioButtonDialog);
     }
 
     @Override
@@ -102,6 +103,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnTheme2:
                 customTheme2Dialog();
+                break;
+
+            case R.id.btnRadioButtonDialog:
+                radioButtonDialog();
                 break;
 
             default:
@@ -268,6 +273,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 })
                 .setNegativeButton(android.R.string.no, null)
                 .show();
+
+    }
+
+
+    private void radioButtonDialog() {
+        // setup the alert builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Choose an animal");
+        final String[] animals = {"horse", "cow", "camel", "sheep", "goat"};
+        int checkedItem = 1; // cow is selected by default now
+        builder.setSingleChoiceItems(animals, checkedItem, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this, "" + animals[which], Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // user clicked OK
+            }
+        });
+        builder.setNegativeButton("Cancel", null);// create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
 
     }
 

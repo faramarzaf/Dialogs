@@ -11,5 +11,6 @@
 
     <string name="txtTheme1">Custom theme1</string>
     <string name="txtTheme2">Custom theme2</string>
+    <string name="txtTheme3">Radio Button Dialog</string>
 
 </resources>
