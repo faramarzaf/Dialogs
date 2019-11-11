@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -15,8 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_marginTop="50dp"
+            android:gravity="center"
             android:orientation="vertical">
 
             <Button
@@ -67,7 +67,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/bg_btn"
                 android:backgroundTint="@color/color8"
-                android:text="@string/txt_ProgressHorizontal"
+                android:text="@string/txtProgressHorizontal"
                 android:textColor="@color/color5" />
 
 
@@ -90,8 +90,20 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/bg_btn"
                 android:backgroundTint="@color/color1"
-                android:text="@string/txtTheme3"
+                android:text="@string/txtRadioButtonDialog"
                 android:textColor="@color/color5" />
+
+
+            <Button
+                android:id="@+id/btnCheckBoxDialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_btn"
+                android:backgroundTint="@color/color6"
+                android:text="@string/txtCheckBoxDialog"
+                android:textColor="@color/color5" />
+
 
             <Button
                 android:id="@+id/btnCustom"
@@ -124,10 +136,6 @@
                 android:backgroundTint="@color/color10"
                 android:text="@string/txtTheme2"
                 android:textColor="@color/color5" />
-
-
-
-
 
 
         </LinearLayout>

@@ -17,9 +17,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnSimple, btnMulti, btnYesNo, btnProgress, btnAlert, btnCustom, btnProgressHorizontal, btnTheme1, btnTheme2, btnRadioButtonDialog;
+    Button btnSimple, btnMulti, btnYesNo, btnProgress, btnAlert, btnCustom, btnProgressHorizontal, btnTheme1, btnTheme2, btnRadioButtonDialog, btnCheckBoxDialog;
     ProgressDialog progress;
 
     @Override
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnTheme1.setOnClickListener(this);
         btnTheme2.setOnClickListener(this);
         btnRadioButtonDialog.setOnClickListener(this);
+        btnCheckBoxDialog.setOnClickListener(this);
+
     }
 
     private void bind() {
@@ -54,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnTheme1 = findViewById(R.id.btnTheme1);
         btnTheme2 = findViewById(R.id.btnTheme2);
         btnRadioButtonDialog = findViewById(R.id.btnRadioButtonDialog);
+
+        btnCheckBoxDialog = findViewById(R.id.btnCheckBoxDialog);
+
     }
 
     @Override
@@ -107,6 +114,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnRadioButtonDialog:
                 radioButtonDialog();
+                break;
+
+            case R.id.btnCheckBoxDialog:
+                checkBoxDialog();
                 break;
 
             default:
@@ -299,6 +310,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AlertDialog dialog = builder.create();
         dialog.show();
 
+    }
+
+
+    private void checkBoxDialog() {
+        // setup the alert builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Choose some animals");
+        final String[] animals = {"horse", "cow", "camel", "sheep", "goat"};
+        final boolean[] checkedItems = {true, false, false, true, false};
+        builder.setMultiChoiceItems(animals, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                //    Toast.makeText(MainActivity.this, "" + animals[which], Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            
+            }
+        });
+        builder.setNegativeButton("Cancel", null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 
