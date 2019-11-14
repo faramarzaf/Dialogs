@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnTheme1 = findViewById(R.id.btnTheme1);
         btnTheme2 = findViewById(R.id.btnTheme2);
         btnRadioButtonDialog = findViewById(R.id.btnRadioButtonDialog);
-
         btnCheckBoxDialog = findViewById(R.id.btnCheckBoxDialog);
 
     }
@@ -92,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnProgressHorizontal:
                 progressHorizontalDialog();
-
                 break;
 
             case R.id.btnAlert:
@@ -263,7 +261,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void customTheme1Dialog() {
         new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom1)).setTitle("Title").setMessage("Message")
-
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(MainActivity.this, "Ok", Toast.LENGTH_SHORT).show();
@@ -328,7 +325,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-            
+
             }
         });
         builder.setNegativeButton("Cancel", null);
